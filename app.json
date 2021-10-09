@@ -1,0 +1,48 @@
+{
+    "name": "TG-MusicPlayer",
+    "description": "A Telegram Userbot to play Songs in Voice Chat",
+    "logo": "https://telegra.ph/file/12a12ad933f3f972deb61.jpg",
+    "keywords": [
+        "Telegram",
+        "VCBot",
+        "MusicPlayer"
+    ],
+    "repository": "https://github.com/Lost-In-Dark/TG-MusicPlayer",
+    "env": {
+        "SESSION": {
+            "description": "Pyrogram String Session",
+            "required": true
+        },
+        "API_ID": {
+            "description": "my.telegram.org",
+            "required": true
+        },
+        "API_HASH": {
+            "description": "my.telegram.org",
+            "required": true
+        },
+        "HNDLR": {
+            "description": "Handler | Default (!)",
+            "value": "!",
+            "required": false
+        }
+    },
+    "addons": [],
+    "buildpacks": [
+        {
+            "url": "heroku/python"
+        },
+        {
+            "url": "heroku/heroku-buildpack-nodejs"
+        },
+        {
+            "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+        }
+    ],
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
+    }
+}
