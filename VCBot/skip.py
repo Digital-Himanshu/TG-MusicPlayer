@@ -24,7 +24,7 @@ async def skip(client, m: Message):
             if x==0:
                pass
             else:
-               hm = skip_item(chat_id, x)
+               hm = await skip_item(chat_id, x)
                if hm==0:
                   pass
                else:
