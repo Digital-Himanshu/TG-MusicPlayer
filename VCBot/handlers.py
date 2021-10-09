@@ -28,10 +28,11 @@ async def skip_current_song(chat_id):
    else:
       return 0
 
-async def skip_item(chat_id, x):
+async def skip_item(chat_id, h):
    if chat_id in QUEUE:
       chat_queue = get_queue(chat_id)
       try:
+         x = int(h)
          songname = chat_queue[x][0]
          chat_queue.pop(x)
          return songname
