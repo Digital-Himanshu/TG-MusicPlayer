@@ -20,7 +20,9 @@ async def skip(client, m: Message):
       skip = m.text.split(None, 1)[1]
       OP = "**Removed the following songs from Queue:-**"
       if chat_id in QUEUE:
-         for x in skip.split(" "):
+         items = [int(x) for x in skip.split(" ") if x.isdigit()]
+         items.sort(reverse=True)
+         for x in items:
             if x==0:
                pass
             else:
