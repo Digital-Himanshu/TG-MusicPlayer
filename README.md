@@ -1,5 +1,6 @@
 # TG-MusicPlayer
 A Telegram Userbot to play songs in Telegram Voice Chats
+
 It's made with [PyTgCalls](https://github.com/pytgcalls/pytgcalls) and [Pyrogram](https://github.com/pyrogram/pyrogram)
 
 
@@ -16,18 +17,33 @@ It's made with [PyTgCalls](https://github.com/pytgcalls/pytgcalls) and [Pyrogram
 
 ### Local Deploy
 1) Installing NodeJS
-```curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-sudo apt-get install -y nodejs```
+```bash
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
 2) Installing FFMPEG and Git
-```sudo apt-get install git ffmpeg -y```
+```bash
+sudo apt-get install git ffmpeg -y
+```
+
 3) Cloning the Repo
-```git clone https://github.com/Lost-In-Dark/TG-MusicPlayer
-cd TG-MusicPlayer```
+```bash
+git clone https://github.com/Lost-In-Dark/TG-MusicPlayer
+cd TG-MusicPlayer
+```
+
 4) Rename `example.env` to `.env` and Fill in the Environment Variables
+
 5) Installing Requirements
-```pip3 install -U -r requirements.txt```
+```bash
+pip3 install -U -r requirements.txt
+```
+
 6) Run the Bot
-```python3 main.py```
+```bash
+python3 main.py
+```
 
 
 ## Environment Variables
