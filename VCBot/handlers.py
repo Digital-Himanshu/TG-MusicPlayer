@@ -38,7 +38,7 @@ def skip_item(chat_id, x):
       except Exception as e:
          return 0
    else:
-      pass
+      return 0
       
 
 @call_py.on_stream_end()
