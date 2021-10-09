@@ -2,20 +2,35 @@ from pyrogram import Client
 from pyrogram import filters
 from pyrogram.types import Message
 from config import bot, call_py, HNDLR, contact_filter
-from VCBot.handlers import skip_current_song
+from VCBot.handlers import skip_current_song, skip_item
 from VCBot.queues import QUEUE, clear_queue
 
 @Client.on_message(contact_filter & filters.command(['skip'], prefixes=f"{HNDLR}"))
 async def skip(client, m: Message):
    chat_id = m.chat.id
-   op = await skip_current_song(chat_id)
-   if op==0:
-      await m.reply("`Nothing Is Playing`")
-   elif op==1:
-      await m.reply("`Queue is Empty, Leaving Voice Chat...`")
+   if len(m.command) < 2:
+      op = await skip_current_song(chat_id)
+      if op==0:
+         await m.reply("`Nothing Is Playing`")
+      elif op==1:
+         await m.reply("`Queue is Empty, Leaving Voice Chat...`")
+      else:
+         await m.reply(f"**Skipped ⏭** \n**🎧 Now Playing** - [{op[0]}]({op[1]})", disable_web_page_preview=True)
    else:
-      await m.reply(f"**Skipped ⏭** \n**🎧 Now Playing** - [{op[0]}]({op[1]})", disable_web_page_preview=True)
-
+      skip = m.text.split(None, 1)[1]
+      OP = "**Removed the following songs from Queue:-**"
+      if chat_id in QUEUE:
+         for x in skip.split(" "):
+            if x==0:
+               pass
+            else:
+               hm = skip_item(chat_id, x)
+               if hm==0:
+                  pass
+               else:
+                  OP = OP + "\n" + f"**#{x}** - {hm}"
+         await m.reply(OP)        
+      
 @Client.on_message(contact_filter & filters.command(['end', 'stop'], prefixes=f"{HNDLR}"))
 async def stop(client, m: Message):
    chat_id = m.chat.id
