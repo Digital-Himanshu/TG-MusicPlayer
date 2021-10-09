@@ -28,6 +28,19 @@ async def skip_current_song(chat_id):
    else:
       return 0
 
+def skip_item(chat_id, x):
+   if chat_id in QUEUE:
+      chat_queue = get_queue(chat_id)
+      try:
+         songname = chat_queue[x][0]
+         chat_queue.pop(x)
+         return songname
+      except Exception as e:
+         return 0
+   else:
+      pass
+      
+
 @call_py.on_stream_end()
 async def on_end_handler(client, update: Update):
    if isinstance(update, StreamAudioEnded):
